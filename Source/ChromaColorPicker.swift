@@ -106,7 +106,22 @@ public class ChromaColorPicker: UIControl, ChromaControlStylable {
     
     public override func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
         let location = touch.location(in: colorWheelView)
-        
+
+        if handles.count == 1, let handle = handles.first, let colour = colorWheelView.pixelColor(at: location) {
+            handle.color = colour
+            setNeedsLayout()
+            colorWheelView.bringSubviewToFront(handle)
+            animateHandleScale(handle, shouldGrow: true)
+
+            if let slider = brightnessSlider {
+                slider.trackColor = handle.color.withBrightness(1)
+                slider.currentValue = slider.value(brightness: handle.color.brightness)
+            }
+
+            currentHandle = handle
+            return true
+        }
+
         for handle in handles {
             if extendedHitFrame(for: handle).contains(location) {
                 colorWheelView.bringSubviewToFront(handle)

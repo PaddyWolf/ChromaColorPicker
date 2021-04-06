@@ -68,7 +68,7 @@ class ViewController: UIViewController {
         // colorPicker.handleSize = CGSize(width: 48, height: 60)
         
         // 1. Add handle and then customize
-        addHomeHandle()
+        //addHomeHandle()
         
         // 2. Add a handle via a color
         let peachColor = UIColor(red: 1, green: 203 / 255, blue: 164 / 255, alpha: 1)
@@ -77,7 +77,7 @@ class ViewController: UIViewController {
         // 3. Create a custom handle and add to picker
         let customHandle = ChromaColorHandle()
         customHandle.color = UIColor.purple
-        colorPicker.addHandle(customHandle)
+        //colorPicker.addHandle(customHandle)
     }
     
     private func addHomeHandle() {
