@@ -119,6 +119,9 @@ public class ChromaColorPicker: UIControl, ChromaControlStylable {
             }
 
             currentHandle = handle
+
+            informDelegateOfColorChange(on: handle)
+            sendActions(for: .valueChanged)
             return true
         }
 
